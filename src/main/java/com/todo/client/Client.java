@@ -1,11 +1,10 @@
 package com.todo.client;
-
-import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import java.util.List;
 import javax.persistence.Table;
 
 @Entity
@@ -13,17 +12,17 @@ import javax.persistence.Table;
 public class Client{
     @Id
     @SequenceGenerator(
-        name="client_id_generator", 
-        sequenceName="client_id_generator",
+        name="client_sequence",
+        sequenceName="client_sequence",
         allocationSize=1
     )
     @GeneratedValue(
-        strategy = GenerationType.SEQUENCE,
-        generator = "client_id_generator"
-    ) 
+        strategy=GenerationType.SEQUENCE,
+        generator="client_sequence"
+    )
     private Long id;
     private String name;
-
+    private String password;
     @Type(ListArrayType.class)
     @Column(
         name="list_todo",
@@ -41,8 +40,10 @@ public class Client{
     //getter's and setter's
     public void setId(Long id){this.id=id;}
     public void setName(String name){this.name=name;}
+    public void setPassword(String password){this.password=password;}
     public void setTodos(List<String> todos){this.todos=todos;}
     public Long getId(){return this.id;}
     public String getName(){return this.name;}
+    public String getPassword(){return this.password;}
     public List<String> getTodos(){return this.todos;}
 }
