@@ -1,5 +1,5 @@
 public class ClientNotFoundInDatabase extends Exception{
-    public ClientNotFoundInDatabase(){
-        super("client not found in the database");
+    public ClientNotFoundInDatabase(String content){
+        super("client with name : " + content + " doesn't exist in the database");
     }
 }
